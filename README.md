@@ -63,22 +63,25 @@ moving the qiime2 results into physeq is a bit laborious.  Qiime2 is new and the
 
 The explicit instructions for getting data out of qiime2 .qza files and into physeq begin below (taken from the link above):
 
-# based on this thread: https://forum.qiime2.org/t/converting-biom-files-with-taxonomic- info-for-import-in-r-with-phyloseq/2542/5
-# How to export a feature (OTU) table and convert from biom to .tsv (use following codes in QIIME2)
-# Step 1, export OTU table
+based on this thread: https://forum.qiime2.org/t/converting-biom-files-with-taxonomic- info-for-import-in-r-with-phyloseq/2542/5
+
+### How to export a feature (OTU) table and convert from biom to .tsv (use following codes in QIIME2)
+#### Step 1, export OTU table
 qiime tools export \ yourOTUtablename.qza \ --output-dir phyloseq
-# OTU table exports as feature-table.biom so convert to .tsv
+
+#### OTU table exports as feature-table.biom so convert to .tsv
 biom convert -i phyloseq/feature-table.biom -o phyloseq/otu_table.txt --to-tsv 
-# now you have otu_table.txt
-# open it up in text edit and change #OTUID to OTUID
-# Step 2, export taxonomy table
+
+now you have otu_table.txt
+open it up in text edit and change #OTUID to OTUID
+#### Step 2, export taxonomy table
 qiime tools export \ taxonomy.qza\
 --output-dir phyloseq
-# now you have taxonomy.tsv
-# open it up in text edit and change Feature ID to OTUID
-# Step 3, export tree
+now you have taxonomy.tsv
+open it up in text edit and change Feature ID to OTUID
+#### Step 3, export tree
 qiime tools export \ unrooted-tree.qza \ --output-dir phyloseq
-# Step 4, if you filtered out any sequences (chloroplasts, mitochondria, etc) then your taxonomy and OTU tables are different lengths. QIIME2 doesn’t filter out taxonomy, so you have to merge the two files in R and output a merged file.
+#### Step 4, if you filtered out any sequences (chloroplasts, mitochondria, etc) then your taxonomy and OTU tables are different lengths. QIIME2 doesn’t filter out taxonomy, so you have to merge the two files in R and output a merged file.
 (use following codes in R)
 
 ## qiime2_to_physeq1.R
