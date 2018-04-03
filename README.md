@@ -25,3 +25,36 @@ At this stage, the user can visualize any .qzv file at the qiime2view website.  
 3. rooted tree
 
 and transitions into the phyloseq R package for further analysis.
+
+### explicit pipeline details:
+
+cutadapt was used to detect and remove primer sequences using default parameters
+Taxonomic placement: Naive-Bayes feature classifier (sklearn) trained on Silva 128 reference database filtered using the primers utilized in the study.
+
+#### VSearch open reference clustering
+
+1. join pairs, 50 bp minimum overlap, 380 minimum and 480 maximum merged sequence length, disposing of sequences that do not meet these specifications.
+2. quality score read filtering, q score 25 minimum with default settings
+3. de novo chimera searching using uchime
+4. vsearch open reference clustering using silva v.128 97% database
+5. taxonomic placement using trained sklearn model
+
+#### deblur16S
+
+1. join pairs, 50 bp minimum overlap, 380 minimum and 480 maximum merged sequence length, disposing of sequences that do not meet these specifications.
+2. deblur denoise-16S for exact sequence variant identification and filtering of non-16S sequences
+3. taxonomic placement using trained sklearn model
+
+#### dada2
+
+1. raw data fed directly to data2 denoise-paired module for exact sequence variants, truncating forward read to 250bp and reverse read to 200bp
+2. taxonomic placement using trained sklearn model
+
+#### further processing of the dada2 results
+
+1. remove all samples with read counts below 5% of the median (1200)
+2. align using MAFFT
+3. midpoint-rooted tree using fasttree
+
+
+
