@@ -57,4 +57,40 @@ Taxonomic placement: Naive-Bayes feature classifier (sklearn) trained on Silva 1
 3. midpoint-rooted tree using fasttree
 
 
+## preparing qiime2 files for importing to physeq
+
+moving the qiime2 results into physeq is a bit laborious.  Qiime2 is new and the hand-off isn't smooth yet.  Ways to handle this are discussed here: https://github.com/joey711/phyloseq/issues/821 
+
+The explicit instructions for getting data out of qiime2 .qza files and into physeq begin below (taken from the link above):
+
+# based on this thread: https://forum.qiime2.org/t/converting-biom-files-with-taxonomic- info-for-import-in-r-with-phyloseq/2542/5
+# How to export a feature (OTU) table and convert from biom to .tsv (use following codes in QIIME2)
+# Step 1, export OTU table
+qiime tools export \ yourOTUtablename.qza \ --output-dir phyloseq
+# OTU table exports as feature-table.biom so convert to .tsv
+biom convert -i phyloseq/feature-table.biom -o phyloseq/otu_table.txt --to-tsv 
+# now you have otu_table.txt
+# open it up in text edit and change #OTUID to OTUID
+# Step 2, export taxonomy table
+qiime tools export \ taxonomy.qza\
+--output-dir phyloseq
+# now you have taxonomy.tsv
+# open it up in text edit and change Feature ID to OTUID
+# Step 3, export tree
+qiime tools export \ unrooted-tree.qza \ --output-dir phyloseq
+# Step 4, if you filtered out any sequences (chloroplasts, mitochondria, etc) then your taxonomy and OTU tables are different lengths. QIIME2 doesn’t filter out taxonomy, so you have to merge the two files in R and output a merged file.
+(use following codes in R)
+
+## qiime2_to_physeq1.R
+
+This first script will take the qiime2 files and begin to format them for physeq.  After adapting it to your project, you will have to do some work by hand:
+
+## manually using Excel to format the tables
+
+It seems tedious but you need to open the merged .txt file in excel and split into two files: one for taxonomy (containing only the columns OTUID and taxonomic info) and the other for the OTU matrix (containing only OTUID and abundances in each sample). Note: for the taxonomy file, you need to use data —> text-to-columns in Excel and separate on semicolon to get columns for kingdom, phylum, class, etc... once you make these two separate files in excel, save each as a .csv
+
+## qiime2_to_physeq.R
+
+This second R script will handle taking the files produced above and convert them into physeq objects (within R)
+
 
