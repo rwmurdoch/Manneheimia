@@ -96,4 +96,15 @@ It seems tedious but you need to open the merged .txt file in excel and split in
 
 This second R script will handle taking the files produced above and convert them into physeq objects (within R)
 
+## split_and_properties.R
 
+In this project, we will first make sure that the sub-5% threshold samples have been removed.  Then, the script splits the project by sampling location.
+
+http://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1003531
+https://www.bioconductor.org/packages/release/bioc/vignettes/phyloseq/inst/doc/phyloseq-FAQ.html#should-i-normalize-my-data-before-alpha-diversity-analysis
+
+The two references above address an important primary question; should you normalize or rarify your data?  The best answer seems to be no, no normalization is appropriate.  However, sample depth should be considered.
+
+1. Split by samplling location
+2. generate read-depth figures
+3. calculate alpha diversity plots
