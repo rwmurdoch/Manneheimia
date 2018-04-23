@@ -118,4 +118,6 @@ This script does basic differential abundance caluculations and generates plots.
 
 Installing DEseq2.R is a bit problematic on Mac, although I have misplaced the workaround that I found.  Google search should get you there.
 
+## permanova.R
 
+This script will run PERMANOVA calculations, which tests the validity of desired clustering metadata variables
