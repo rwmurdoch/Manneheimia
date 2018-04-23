@@ -105,6 +105,11 @@ https://www.bioconductor.org/packages/release/bioc/vignettes/phyloseq/inst/doc/p
 
 The two references above address an important primary question; should you normalize or rarify your data?  The best answer seems to be no, no normalization is appropriate.  However, sample depth should be considered.
 
+This script will:
+
 1. Split by samplling location
 2. generate read-depth figures
-3. calculate alpha diversity plots
+3. produce alpha diversity plots
+4. calculate a variety of ordinations
+
+
