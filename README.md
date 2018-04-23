@@ -92,7 +92,7 @@ This first script will take the qiime2 files and begin to format them for physeq
 
 It seems tedious but you need to open the merged .txt file in excel and split into two files: one for taxonomy (containing only the columns OTUID and taxonomic info) and the other for the OTU matrix (containing only OTUID and abundances in each sample). Note: for the taxonomy file, you need to use data —> text-to-columns in Excel and separate on semicolon to get columns for kingdom, phylum, class, etc... once you make these two separate files in excel, save each as a .csv
 
-### qiime2_to_physeq.R
+### qiime2_to_physeq2.R
 
 This second R script will handle taking the files produced above and convert them into physeq objects (within R)
 
@@ -111,5 +111,11 @@ This script will:
 2. generate read-depth figures
 3. produce alpha diversity plots
 4. calculate a variety of ordinations
+
+## DEseq2.R
+
+This script does basic differential abundance caluculations and generates plots.  
+
+Installing DEseq2.R is a bit problematic on Mac, although I have misplaced the workaround that I found.  Google search should get you there.
 
 
