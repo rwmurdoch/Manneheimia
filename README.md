@@ -121,3 +121,7 @@ Installing DEseq2.R is a bit problematic on Mac, although I have misplaced the w
 ## PERMANOVA.R
 
 This script will run PERMANOVA calculations, which tests the validity of desired clustering metadata variables
+
+## MicrobiomSeq.R
+
+This script installs and runs the microbiomseq package and performs network analyses.  This package seems a bit buggy and is difficult to work with.  Network analysis is the only thing that I could get to work.  
