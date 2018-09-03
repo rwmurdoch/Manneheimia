@@ -3,7 +3,11 @@ Description of pipeline for processing of Mannheimia amplicon library
 
 # Overview
 
-This is a description of a pipeline that was used for processing a set of ~180 amplicon libraries.  
+This is a description of a pipeline that was used for processing a set of ~180 amplicon libraries and performing a variety of microbiome analyses.  If you find any of these scripts useful in your own work, please consider citing the paper for which they were created (forthcoming)
+
+#### Citation
+
+forthcoming
 
 ## 1. qiime2_master_RWM.sh 
 
@@ -98,6 +102,10 @@ This second R script will handle taking the files produced above and convert the
 
 ## Microbiome analyses and charts within the Phyloseq package
 
+All of the analyses work from Phyloseq package that resulted from the Qiime2 import.  A familiarity with Phyloseq is required to adapt them to a given project or any given goal.
+
+These scripts are not "fire and forget" in any case.  Each of them has to be carefully altered to perform desired analyses.  For example, the stacked.bar.2.R script can be directed at any taxonomic level or any subset of samples.  The scripts are commented such they shouldn't be too hard to figure out.  Many of the scripts have universal variables at the very beginning that can be used to more rapidly customize them (haven't gotten around to cleaning up all the scripts yet).
+
 ### split_and_properties.R
 
 In this project, we will first make sure that the sub-5% threshold samples have been removed.  Then, the script splits the project by sampling location.
@@ -117,6 +125,10 @@ This script will:
 ### stacked.bar.2.R
 
 This script has all basic tools required to create a variety of stacked bar plots.  Care must be taken to focus the script on certain samples and taxonomic levels.
+
+### taxa.time.plot.R
+
+Plot taxa over time with a moving average and a confidence interval.  This complements stacked bars in that this approach takes variation into account, at the expense of only plotting one taxon at a time.
 
 ### DEseq2.R
 
