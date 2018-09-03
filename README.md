@@ -96,7 +96,9 @@ It seems tedious but you need to open the merged .txt file in excel and split in
 
 This second R script will handle taking the files produced above and convert them into physeq objects (within R)
 
-## split_and_properties.R
+## Microbiome analyses and charts within the Phyloseq package
+
+### split_and_properties.R
 
 In this project, we will first make sure that the sub-5% threshold samples have been removed.  Then, the script splits the project by sampling location.
 
@@ -112,24 +114,24 @@ This script will:
 3. produce alpha diversity plots
 4. calculate a variety of ordinations
 
-## stacked.bar.2.R
+### stacked.bar.2.R
 
 This script has all basic tools required to create a variety of stacked bar plots.  Care must be taken to focus the script on certain samples and taxonomic levels.
 
-## DEseq2.R
+### DEseq2.R
 
 This script does basic differential abundance caluculations and generates plots.  This script was not used in the final data analysis.
 
 Installing DEseq2.R is a bit problematic on Mac, although I have misplaced the workaround that I found.  Google search should get you there.
 
-## DeSeq2.3.R
+### DeSeq2.3.R
 
 This is a refinement of the application of the DeSeq package.  This script was used to explore control vs. infected abundancees at the genus level, but does not take into account day 1, pre-inoculation, levels; thus, day 1 differences are not taken into account.  Results should be further refined using the stacked.bar.2.R script
 
-## PERMANOVA.R
+### PERMANOVA.R
 
 This script will run PERMANOVA calculations, which tests the validity of desired clustering metadata variables
 
-## MicrobiomSeq.R
+### MicrobiomSeq.R
 
 This script installs and runs the microbiomseq package and performs network analyses.  This package seems a bit buggy and is difficult to work with.  Network analysis is the only thing that I could get to work.  
