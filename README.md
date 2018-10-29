@@ -3,11 +3,7 @@ Description of pipeline for processing of Mannheimia amplicon library
 
 # Overview
 
-This is a description of a pipeline that was used for processing a set of ~180 amplicon libraries and performing a variety of microbiome analyses.  If you find any of these scripts useful in your own work, please consider citing the paper for which they were created (forthcoming)
-
-#### Citation
-
-forthcoming
+This is a description of a pipeline that was used for processing a set of ~180 amplicon libraries and performing a variety of microbiome analyses.  
 
 ## 1. qiime2_master_RWM.sh 
 
